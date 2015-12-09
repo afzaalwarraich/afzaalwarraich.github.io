@@ -24,6 +24,7 @@ function login(form) {
             number        : form.username.value || "Anonymous", // listen on username line else Anonymous
             publish_key   : 'pub-c-48cf2205-a61c-4394-9cfa-3e0b3d1e3686',
             subscribe_key : 'sub-c-9d250546-4a52-11e5-81b5-02ee2ddab7fe',
+            ssl: true
         });
         phone.ready(function(){ form.username.style.background="#55ff5b"; });
         phone.receive(function(session){
