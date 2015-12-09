@@ -9,8 +9,8 @@
 </form>
 
 <form name="callForm" id="call" action="#" onsubmit="return makeCall(this);">
-	<input type="text" name="number" placeholder="Enter user to dial!" />
-	<input type="submit" value="Call"/>
+        <input type="text" name="number" placeholder="Enter user to dial!" />
+        <input type="submit" value="Call"/>
 </form>
 <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
 <script src="http://stephenlb.github.io/webrtc-sdk/js/webrtc.js"></script>
@@ -20,23 +20,23 @@ var video_out = document.getElementById("vid-box");
 </script>
 <script>
 function login(form) {
-	var phone = window.phone = PHONE({
-	    number        : form.username.value || "Anonymous", // listen on username line else Anonymous
-	    publish_key   : 'pub-c-48cf2205-a61c-4394-9cfa-3e0b3d1e3686',
-	    subscribe_key : 'sub-c-9d250546-4a52-11e5-81b5-02ee2ddab7fe',
-	});	
-	phone.ready(function(){ form.username.style.background="#55ff5b"; });
-	phone.receive(function(session){
-	    session.connected(function(session) { video_out.appendChild(session.video); });
-	    session.ended(function(session) { video_out.innerHTML=''; });
-	});
-	return false; 	// So the form does not submit.
+        var phone = window.phone = PHONE({
+            number        : form.username.value || "Anonymous", // listen on username line else Anonymous
+            publish_key   : 'pub-c-48cf2205-a61c-4394-9cfa-3e0b3d1e3686',
+            subscribe_key : 'sub-c-9d250546-4a52-11e5-81b5-02ee2ddab7fe',
+        });
+        phone.ready(function(){ form.username.style.background="#55ff5b"; });
+        phone.receive(function(session){
+            session.connected(function(session) { video_out.appendChild(session.video); });
+            session.ended(function(session) { video_out.innerHTML=''; });
+        });
+        return false;         // So the form does not submit.
 }
 function makeCall(form){
-	if (!window.phone) alert("Login First!");
-	else phone.dial(form.number.value);
-	return false;
+        if (!window.phone) alert("Login First!");
+        else phone.dial(form.number.value);
+        return false;
 }
 </script>
 </body>
-</html>
+</html> 
